@@ -7,7 +7,7 @@ import products from "./mockdata/products.json";
  * Webpack bundles the file into the application.
  * You'll learn how to fetch content through APIs in a future lesson.
  */
-
+   
 function App() {
   return (
     <div className="App">
