@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductListItem from "../ProductListItem";
 import ProductDetails from "../ProductDetails";
 import './ProductView.css';
@@ -8,8 +8,17 @@ function ProductView({ products }) {
   // TODO: Replace with state variable
   const [sideOpen, setSideOpen] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState();
-  const [isSelected, setIsSelected] = useState(false);
-  console.log(selectedProduct);
+
+  useEffect(() => {
+    console.log(`selectedProduct CHANGED TO`, selectedProduct);
+    if (selectedProduct) setSideOpen(true);
+  }, [selectedProduct]);
+
+  useEffect(() => {
+    console.log(`sideOpen CHANGED TO`, sideOpen);
+    if (!sideOpen) setSelectedProduct();
+  }, [sideOpen]);
+
   return (
     <div className="product-view">
       <div className="product-main-area">
@@ -21,9 +30,8 @@ function ProductView({ products }) {
               product={item}
               onClick={() => {
                 setSelectedProduct(item);
-                setIsSelected(!isSelected);
               }}
-              isSelected={isSelected}
+              isSelected={selectedProduct && item.id === selectedProduct.id}
             />
           )}
         </div>
