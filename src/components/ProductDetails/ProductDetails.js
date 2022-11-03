@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function ProductDetails({ product, visible }) {
-  if (!visible) return null
+  if (!visible) return null;
 
   if (!product) return (
     <div className="product-details">
@@ -9,7 +9,7 @@ function ProductDetails({ product, visible }) {
       <p>Welcome to our product catalog. Please enjoy exploring.</p>
       <p>Please select a product to view its details.</p>
     </div>
-  )
+  );
 
   return (
     <div className="product-details">
@@ -24,7 +24,7 @@ function ProductDetails({ product, visible }) {
         </li>)}
       </ul>
     </div>
-  )
+  );
 }
 
 export default ProductDetails;
